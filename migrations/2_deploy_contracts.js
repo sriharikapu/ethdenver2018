@@ -4,6 +4,10 @@ var Authentication = artifacts.require("./Authentication.sol");
 var SafeMath = artifacts.require("./zeppelin/math/SafeMath.sol");
 var PullPayment = artifacts.require("./zeppelin/payment/PullPayment.sol");
 
+var Governor = artifacts.require("./Governor.sol");
+var WorkerRegistry = artifacts.require('./WorkerRegistry.sol');
+var ProjectRegistry = artifacts.require('./ProjectRegistry.sol');
+
 module.exports = function(deployer) {
   deployer.deploy(Ownable);
   deployer.link(Ownable, Destructible);
@@ -13,4 +17,9 @@ module.exports = function(deployer) {
   deployer.deploy(SafeMath);
   deployer.link(SafeMath, PullPayment);
   deployer.deploy(PullPayment);
+
+  deployer.deploy(Governor);
+  deployer.deploy(WorkerRegistry);
+  deployer.deploy(ProjectRegistry);
+
 };
